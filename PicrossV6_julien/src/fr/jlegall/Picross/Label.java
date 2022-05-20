@@ -14,14 +14,10 @@ import javax.swing.border.Border;
  *
  * @author jlegall
  */
+@SuppressWarnings("serial")
 public class Label extends JLabel {
 
-	private int valeur;
-	private int taille;
-
 	public Label(int val, int t) {
-		this.valeur = val;
-		this.taille = t;
 		this.setPreferredSize(new Dimension(t, t));
 		this.setHorizontalAlignment(JLabel.CENTER);
 		this.setVerticalAlignment(JLabel.CENTER);

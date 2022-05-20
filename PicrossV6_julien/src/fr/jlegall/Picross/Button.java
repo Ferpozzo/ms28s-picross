@@ -6,18 +6,16 @@ import java.awt.event.MouseListener;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+@SuppressWarnings("serial")
 public class Button extends JButton implements MouseListener {
 
 	private int etat;
 	private int indiceX;
 	private int indiceY;
-	private int taille;
-
 	public Button(int x, int y, int t) {
 
 		this.indiceX = x;
 		this.indiceY = y;
-		this.taille = t;
 		this.etat = 0;
 		this.setPreferredSize(new Dimension(t, t));
 		this.setBackground(Color.WHITE);
@@ -70,20 +68,29 @@ public class Button extends JButton implements MouseListener {
 
 	}
 
-	// Méthode appelée lors du survol de la souris
-	public void mouseEntered(MouseEvent event) {
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	// Méthode appelée lorsque la souris sort de la zone du bouton
-	public void mouseExited(MouseEvent event) {
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	// Méthode appelée lorsque l'on presse le bouton gauche de la souris
-	public void mousePressed(MouseEvent event) {
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	// Méthode appelée lorsque l'on relâche le clic de souris
-	public void mouseReleased(MouseEvent event) {
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
+
 
 }

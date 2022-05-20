@@ -13,13 +13,12 @@ import java.util.Collections;
 import javax.swing.*;
 import java.util.List;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import java.awt.Desktop;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+@SuppressWarnings("serial")
 public class Picross extends JFrame implements MouseListener {
 
 	private int longueur;
@@ -28,8 +27,6 @@ public class Picross extends JFrame implements MouseListener {
 	private List<Button> mesBoutons;
 	private Grille grille;
 	private List<Case> matPicrossCase;
-	private int matPicross[][];
-	private int nbAide = 5;
 	private ButtonHelp btnHelp;
 	private static int cpt = 0;
 	private List<Picross> listeTest;
@@ -63,7 +60,7 @@ public class Picross extends JFrame implements MouseListener {
 
 		// Recupere la matrice de la grille pour le resultat
 		matPicrossCase = grille.getMatriceCase();
-		matPicross = grille.getMatrice();
+		grille.getMatrice();
 
 		this.setTitle("Picross : " + this.largeur + "x" + this.longueur);
 		this.setResizable(false);
@@ -79,13 +76,11 @@ public class Picross extends JFrame implements MouseListener {
 		System.out.println(JOptionPane.getDefaultLocale());
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
-			JOptionPane opt = new JOptionPane();
-
 			public void windowClosing(WindowEvent e) {
-				int reponse = opt.showConfirmDialog(null, translator.getMessage(language, "exitConfirmationMessage"),
-						translator.getMessage(language, "confirmMessage"), opt.YES_NO_OPTION, opt.QUESTION_MESSAGE);
+				int reponse = JOptionPane.showConfirmDialog(null, translator.getMessage(language, "exitConfirmationMessage"),
+						translator.getMessage(language, "confirmMessage"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-				if (reponse == opt.YES_OPTION) {
+				if (reponse == JOptionPane.YES_OPTION) {
 					System.exit(0);
 				}
 			}
@@ -118,12 +113,10 @@ public class Picross extends JFrame implements MouseListener {
 		JMenuItem restartItem = new JMenuItem(new AbstractAction(translator.getMessage(language, "restartMenu")) {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane opt = new JOptionPane();
-				int reponse = opt.showConfirmDialog(null, translator.getMessage(language, "restartMessage"),
-						translator.getMessage(language, "confirmMessage"), opt.YES_NO_OPTION, opt.QUESTION_MESSAGE);
+				int reponse = JOptionPane.showConfirmDialog(null, translator.getMessage(language, "restartMessage"),
+						translator.getMessage(language, "confirmMessage"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-				if (reponse == opt.YES_OPTION) {
-					MenuChoix newMenuChoix = new MenuChoix(language);
+				if (reponse == JOptionPane.YES_OPTION) {
 					Picross.this.dispose();
 				}
 			}
@@ -324,12 +317,10 @@ public class Picross extends JFrame implements MouseListener {
 			msg.setText(translator.getMessage(language, "winMessage"));
 			btnOk.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent event) {
-					JOptionPane opt = new JOptionPane();
+					int reponse = JOptionPane.showConfirmDialog(null, translator.getMessage(language, "restartMessage"),
+							translator.getMessage(language, "confirmMessage"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-					int reponse = opt.showConfirmDialog(null, translator.getMessage(language, "restartMessage"),
-							translator.getMessage(language, "confirmMessage"), opt.YES_NO_OPTION, opt.QUESTION_MESSAGE);
-
-					if (reponse == opt.NO_OPTION) {
+					if (reponse == JOptionPane.NO_OPTION) {
 						System.exit(0);
 					} else {
 						popup.dispose();
@@ -360,40 +351,28 @@ public class Picross extends JFrame implements MouseListener {
 
 	}
 
-	/**
-	 * Méthode appelée lors du survol de la souris
-	 *
-	 * @param event
-	 */
 	@Override
-	public void mouseEntered(MouseEvent event) {
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	/**
-	 * Méthode appelée lorsque la souris sort de la zone du bouto
-	 *
-	 * @param event
-	 */
 	@Override
-	public void mouseExited(MouseEvent event) {
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	/**
-	 * Méthode appelée lorsque l'on presse le bouton gauche de la souri
-	 *
-	 * @param event
-	 */
 	@Override
-	public void mousePressed(MouseEvent event) {
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	/**
-	 * Méthode appelée lorsque l'on relâche le clic de souri
-	 *
-	 * @param event
-	 */
 	@Override
-	public void mouseReleased(MouseEvent event) {
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

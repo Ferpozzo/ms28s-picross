@@ -68,13 +68,3 @@ public class Translator {
 		return this.languages.get(language).get(key);
 	}
 }
-/*
- * public class Messages{ private String startMessage = ""; private String
- * gridMessage = ""; private String menuMessage = ""; private String
- * rulesMessage = ""; private String helpMessage = ""; private String
- * verifyMessage = ""; private String wrongVerifyMessage = ""; private String
- * winMessage = ""; private String exitConfirmationMessage = ""; public
- * Messages() {
- * 
- * } }
- */

@@ -9,9 +9,10 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@SuppressWarnings("serial")
 public class MenuChoix extends JFrame {
 
-	private List<JComboBox> mesCombos;
+	private List<JComboBox<String>> mesCombos;
 
 	public MenuChoix(String language) {
 		Translator translator = new Translator();
@@ -33,7 +34,7 @@ public class MenuChoix extends JFrame {
 		JLabel label2 = new JLabel(translator.getMessage(language, "gridMessage") + " :    ");
 
 		String[] items = { "5x5", "10x10", "15x15", "20x20", "25x25" };
-		JComboBox maCombo = new JComboBox(items);
+		JComboBox<String> maCombo = new JComboBox<String>(items);
 		maCombo.setMaximumSize(new Dimension(100, 24));
 
 		mesCombos.add(maCombo);
@@ -57,15 +58,14 @@ public class MenuChoix extends JFrame {
 
 		btnValid.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent event) {
-				String taille;
 				int tailleB = 5;
 				int id;
 
-				taille = MenuChoix.this.mesCombos.get(0).getSelectedItem().toString();
+				MenuChoix.this.mesCombos.get(0).getSelectedItem().toString();
 				id = MenuChoix.this.mesCombos.get(0).getSelectedIndex() + 1;
 
 				try {
-					Picross newPicross = new Picross(id * tailleB, id * tailleB, language);
+					new Picross(id * tailleB, id * tailleB, language);
 					MenuChoix.this.dispose();
 				} catch (UnsupportedLookAndFeelException ex) {
 					Logger.getLogger(MenuChoix.class.getName()).log(Level.SEVERE, null, ex);

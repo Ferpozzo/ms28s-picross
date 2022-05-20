@@ -15,9 +15,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class LanguageChoice extends JFrame {
 
-	private List<JComboBox> langsCombo;
+	private List<JComboBox<String>> langsCombo;
 
 	public LanguageChoice() {
 		langsCombo = new ArrayList<>();
@@ -38,7 +39,7 @@ public class LanguageChoice extends JFrame {
 		JLabel label2 = new JLabel("Language:    ");
 
 		String[] items = { "English", "Português", "Français" };
-		JComboBox maCombo = new JComboBox(items);
+		JComboBox<String> maCombo = new JComboBox<String>(items);
 		maCombo.setMaximumSize(new Dimension(100, 24));
 
 		langsCombo.add(maCombo);
@@ -75,7 +76,7 @@ public class LanguageChoice extends JFrame {
 					language = "en-us";
 				}
 				try {
-					MenuChoix newMenuChoix = new MenuChoix(language);
+					new MenuChoix(language);
 					LanguageChoice.this.dispose();
 				} catch (Exception ex) {
 					Logger.getLogger(MenuChoix.class.getName()).log(Level.SEVERE, null, ex);

@@ -120,13 +120,11 @@ public class Grille {
 
 	// Méthode qui permet de renvoyer la liste des cases avec l'état 1
 	public List<Case> getMatriceCase() {
-		ArrayList matrice = new ArrayList<>();
-		int val = 0;
+		ArrayList<Case> matrice = new ArrayList<>();
 		for (int i = 0; i < this.largeur; i++) {
 			for (int j = 0; j < this.longueur; j++) {
 				if (this.grille[i][j].getEtat() == 1) {
 					matrice.add(this.grille[i][j]);
-					val++;
 				}
 			}
 		}
